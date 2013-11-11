@@ -52,6 +52,7 @@ form label {
 
 input {
   margin-bottom: 10px;
+  outline: none;
 }
 
 .errors {
@@ -72,4 +73,10 @@ form.quirks {
   text-align: right;
   margin-right: 20px;
   width: 200px;
+}
+
+textarea {
+  max-width: 350px;
+  max-height: 200px;
+  outline: none;
 }

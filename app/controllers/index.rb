@@ -1,3 +1,5 @@
+############ http://edgeguides.rubyonrails.org/routing.html ###############
+
 get '/' do
   @events = Event.all
   erb :index
@@ -9,19 +11,19 @@ get '/events/:id/show' do |id|
 end
 
 get '/events/new' do
-  # p params
-  # @new_event = Event.create(params)
-  # # if @new_event.save
-  # redirect '/'
-  # else
-
-  # end
+  erb :new_event
   #TODO IMPLEMENT ME
 end
 
-post '/events/create' do
+post '/events' do
   p params
-  @new_event = Event.create(params)
-  redirect '/'
+  event = Event.create(params)
+  if event.valid?
+    redirect '/'
+  else
+    p event.errors.full_messages
+    redirect '/events/new'
+  end
+  ###### use flash messages to print error messages to screen ########
   #TODO IMPLEMENT ME
 end
